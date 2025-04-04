@@ -1,0 +1,264 @@
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Background */
+body {
+    background: #000;
+    color: #b0b0b0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Gallery */
+.archive-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.archive-gallery img {
+    width: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Тряска изображения */
+.shaky-img {
+    animation: shake-hard 0.25s infinite;
+}
+
+/* Тряска изображений с разными скоростями */
+.archive-gallery img:nth-child(1) { animation: shake-hard 0.28s infinite; }
+.archive-gallery img:nth-child(2) { animation: shake-hard 0.35s infinite; }
+.archive-gallery img:nth-child(3) { animation: shake-hard 0.32s infinite; }
+
+.archive-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Text glitch effect */
+@keyframes glitch {
+    0% { text-shadow: 3px 0px rgba(255, 0, 0, 0.4), -3px 0px rgba(0, 255, 255, 0.4); }
+    25% { text-shadow: -3px 0px rgba(255, 0, 0, 0.4), 3px 0px rgba(0, 255, 255, 0.4); }
+    50% { text-shadow: 2px -2px rgba(255, 0, 0, 0.4), -2px 2px rgba(0, 255, 255, 0.4); }
+    75% { text-shadow: -2px -2px rgba(255, 0, 0, 0.4), 2px 2px rgba(0, 255, 255, 0.4); }
+    100% { text-shadow: 3px 3px rgba(255, 0, 0, 0.4), -3px -3px rgba(0, 255, 255, 0.4); }
+}
+
+h1 {
+    font-size: 40px;
+    color: #888;
+    animation: glitch 5s infinite alternate;
+    position: relative;
+    z-index: 5;
+}
+
+/* Navigation */
+nav {
+    margin-top: 15px;
+    position: relative;
+    z-index: 5;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+nav a.active {
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+/* Content */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+main {
+    padding: 15px;
+    background: rgba(20, 20, 20, 0.7);
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+    margin-top: 15px;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+/* Glitch effect for other elements */
+.glitch-effect {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 0, 0, 0.05);
+    animation: glitchEffect 10s infinite;
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* Scanlines and VHS Overlay */
+.scanlines, .vhs-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Glitch animation */
+@keyframes glitchEffect {
+    0% { opacity: 0.1; transform: translateX(0); }
+    50% { opacity: 0.2; transform: translateX(3px); }
+    100% { opacity: 0.1; transform: translateX(0); }
+}
+
+/* Scanlines animation */
+@keyframes scanlines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+}
+
+/* Shake Animation for Background */
+@keyframes shake-hard {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-2px, 0); }
+    20% { transform: translate(2px, 0); }
+    30% { transform: translate(-3px, 0); }
+    40% { transform: translate(3px, 0); }
+    50% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    70% { transform: translate(-1px, 0); }
+    80% { transform: translate(1px, -1px); }
+    90% { transform: translate(0, 1px); }
+    100% { transform: translate(0, 0); }
+}
+@keyframes shake {
+    0% { transform: translate(-50%, -50%); }
+    20% { transform: translate(-50.5%, -50.2%); }
+    40% { transform: translate(-49.8%, -50.4%); }
+    60% { transform: translate(-50.3%, -49.7%); }
+    80% { transform: translate(-49.6%, -50.3%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+/* Контейнер для изображения в модальном окне */
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70vw;
+    max-height: 80vh;
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: modalFadeIn 0.3s ease-in-out, shake 0.2s infinite alternate ease-in-out;
+}
+
+}
+
+/* Анимация появления */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Изображение внутри модального окна */
+.modal-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Увеличение при наведении */
+.modal-content img:hover {
+    transform: scale(1.02);
+}
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #ff5757;
+}
